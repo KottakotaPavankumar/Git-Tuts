@@ -1,0 +1,28 @@
+package threads;
+
+class Task implements Runnable {
+
+	@Override
+	public void run() {
+		for (int i = 1; i <= 25; i++)
+			System.out.println("Child : " + i);
+	}
+}
+
+public class ChildThreadDemo2 {
+
+	public static void main(String[] args) {
+		System.out.println("In Main Thread");
+		Thread ct = new Thread(new Task());
+		// ct.setDaemon(True);
+		ct.start(); // Calls run() in Task object
+
+		for (int i = 1; i <= 25; i++)
+			System.out.println("Main : " + i);
+
+		// System.out.println("Waiting For Child To Terminate!");
+		// ct.join();
+		System.out.println("The End!");
+	}
+
+}
